@@ -150,7 +150,7 @@ exports.createEntityRecord = async (req, res) => {
     }
     
     // Check if the entity is active
-    if (!entity.entityIsActive) {
+    if (!entity.derivedRecordConfig.activation.entityActive) {
       return res.status(400).json({
         status: 'fail',
         message: `Entity ${entity.name} is currently inactive and cannot accept new records`
@@ -265,7 +265,7 @@ exports.updateEntityRecord = async (req, res) => {
     }
     
     // Check if the entity is active
-    if (!entity.entityIsActive) {
+    if (!entity.derivedRecordConfig.activation.entityActive) {
       return res.status(400).json({
         status: 'fail',
         message: `Entity ${entity.name} is currently inactive and records cannot be updated`
